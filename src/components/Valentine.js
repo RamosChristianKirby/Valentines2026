@@ -4,11 +4,8 @@ import noImg from './angry-cats-v0-37n6eeti7j5b1-removebg-preview.png';
 import yesGif from './output-onlinegiftools (1).gif'; // add your provided gif here
 
 export default function Valentine() {
-  const [text, setText] = useState('Be my Valentine ❤️');
-  const [sent, setSent] = useState(false);
   const [yesScale, setYesScale] = useState(1);
   const [noClicks, setNoClicks] = useState(0);
-  const [showCat, setShowCat] = useState(false);
   const [showSadMessage, setShowSadMessage] = useState(false);
 
   // YES overlay state
@@ -18,12 +15,6 @@ export default function Valentine() {
 
   // NEW: romantic theme flag
   const [romanticTheme, setRomanticTheme] = useState(false);
-
-  function send() {
-    setSent(true);
-    spawnConfetti(30);
-    setTimeout(() => setSent(false), 1800);
-  }
 
   // replaced confetti with softer rose-petal emit
   function spawnConfetti(amount = 20) {
@@ -114,7 +105,7 @@ export default function Valentine() {
 
     // show a static preview only after several NO clicks (no GIF)
     if (next >= 3) {
-      setShowCat(true);
+      // removed setShowCat - unused variable
     }
 
     // when reaching 10 NOs switch to final sad full-screen mode
@@ -157,7 +148,6 @@ export default function Valentine() {
     setNoClicks(0);
     setShowSadMessage(false);
     setYesScale(1);
-    setShowCat(false);
     setRomanticTheme(false); // clear theme on reset
   }
 
